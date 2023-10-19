@@ -1,0 +1,253 @@
+input[type=text] {
+  border: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,.5);
+  color: #c9c9c9;
+  transition: background .2s ease-in-out;
+}
+
+input[type=text]:focus {
+  outline: none;
+  padding: 8px 18px;
+  border: 2px solid black;
+}
+
+.dropContainer {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed #555;
+  cursor: pointer;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.dropContainer:hover {
+  background: rgba(0,0,0,.5);
+  border-color: white;
+}
+
+.hovered {
+  background: rgba(0,0,0,.5);
+  border-color: white;
+}
+
+.dropContainer:hover .dropTitle {
+  color: #c9c9c9;
+}
+
+.dropTitle {
+  color: #c9c9c9;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: color .2s ease-in-out;
+}
+
+.selectFile {
+  margin-right: 20px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+.scanResultBox {
+  display: flex;
+  color: white;
+  align-items: center;
+  padding: 30px;
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.scanBox {
+  padding: 30px;
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.scanBox h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.scanBox .browserBox {
+  position: relative;
+}
+
+.scanBox .browserBox input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.scanBox .browserBox label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.scanBox .browserBox input:focus ~ label,
+.scanBox .browserBox input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #f40303;
+  font-size: 12px;
+}
+
+.scanBox .sendScan {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #f40303;
+  font-size: 16px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: .5s;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+
+.scanBox .sendScan:hover {
+  background: #a20000;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 20px #f40303;
+}
+
+.scanBox .sendScan span {
+  position: absolute;
+  display: block;
+}
+
+.scanBox .sendScan span:nth-child(1) {
+  top: 0;
+  left: -75%;
+  width: 75%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f40303);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.scanBox .sendScan span:nth-child(2) {
+  top: -50%;
+  right: 0;
+  width: 2px;
+  height: 50%;
+  background: linear-gradient(180deg, transparent, #f40303);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.scanBox .sendScan span:nth-child(3) {
+  bottom: 0;
+  right: -50%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #f40303);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.scanBox .sendScan span:nth-child(4) {
+  bottom: -50%;
+  left: 0;
+  width: 2px;
+  height: 50%;
+  background: linear-gradient(360deg, transparent, #f40303);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+.loader {
+  border: 6px solid #ffffff;
+  border-top: 6px solid #f40303;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 2s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.APIDocumentation {
+  font-size: 15px;
+  color: #c9c9c9;
+  text-decoration: none;
+  font-family: 'Permanent Marker', cursive;
+}

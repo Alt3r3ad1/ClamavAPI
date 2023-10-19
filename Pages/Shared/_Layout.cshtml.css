@@ -1,0 +1,39 @@
+﻿.title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+}
+
+.API {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 15px;
+  color: #a20000;
+  cursor: pointer;
+}
+
+.objective {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textObjective {
+  font-family: 'Gabarito', cursive;
+  font-size: 15px;
+  color: white;
+  padding: 15px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

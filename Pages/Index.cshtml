@@ -1,0 +1,80 @@
+﻿@page
+@model IndexModel
+
+@{
+  var scanResult = TempData["ScanResult"] as clamavAPI.ViewModels.ScanViewModel;
+  var exception = TempData["Exception"] as clamavAPI.ViewModels.ExceptionViewModel;
+}
+
+<div style="display: flex; justify-content: center;">
+  <form id="scanForm" method="post" enctype="multipart/form-data" style="display: none;">
+    <input type="file" asp-for="upload.file" id="fileToScan">
+    <input type="text" id="expectedFileExtension" asp-for="upload.expectedFileExtension">
+  </form>
+
+  <div class="scanBox">
+    <div class="flexColumn">
+      <label class="dropContainer flexColumn" id="dropContainer">
+        <span class="dropTitle">Drop file here</span>
+        or
+        <button class="browserBox" id="customUploadButton" onclick="document.getElementById('fileToScan').click();"
+          required>Browser file</button>
+        <span style="color: #c9c9c9;" id="fileNameDisplay"></span>
+      </label>
+      <input type="text" id="expectedExtension"
+        onchange="document.getElementById('expectedFileExtension').value = this.value"
+        placeholder="Expected file extension">
+      <a class="sendScan" id="sendScan">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div>
+          <label id="sendButton" style="cursor: pointer;">Send to scan</label>
+          <div id="loader" class="loader"></div> 
+        </div>
+      </a>
+      <div style="margin-top: 10px;">
+        <a class="APIDocumentation" title="View API usage documentation" href="/swagger">API documentation</a>
+      </div>
+    </div>
+    <div class="scanResultBox" style="display: none;" id="maximumSize">
+      <div>
+        <p>Error: <span style="color: #df0808;">The maximum file size of 15MB was exceeded.</span></p>
+      </div>
+    </div>
+
+    @if (scanResult != null || exception != null)
+    {
+      <div class="scanResultBox" id="scanResultBox">
+
+        @if (scanResult != null)
+        {
+          <div>
+            <p>Infected: <span style="color: #df0808;">@scanResult.infected</span></p>
+            <p>Viruses: @if (@scanResult.viruses != null)
+              {
+              <ul>
+                  @foreach (var valor in @scanResult.viruses!)
+                  {
+                  <li style="color: #df0808;">@valor</li>
+                  }
+              </ul>
+              }
+            </p>
+            <p>CompatibleFileExtension: <span style="color: #df0808;">@scanResult.fileExtension!.compatibleFileExtension</span></p>
+            <p>ExpectedFileExtension: <span style="color: #df0808;">@scanResult.fileExtension.expectedFileExtension</span></p>
+            <p>FileExtension: <span style="color: #df0808;">@scanResult.fileExtension.fileExtension</span></p>
+            <p>ContentType: <span style="color: #df0808;">@scanResult.fileExtension.contentType</span></p>
+          </div>
+        }
+        @if (exception != null)
+        {
+          <div>
+            <p>Error: <span style="color: #df0808;">@exception.message</span></p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,9 @@
+[Unit]
+Description=Running docker clamav
+
+[Service]
+WorkingDirectory=/usr/local/bin/
+ExecStart=/bin/bash ./clamav-Docker.sh
+
+[Install]
+WantedBy=multi-user.target
