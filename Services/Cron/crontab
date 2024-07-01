@@ -1,0 +1,2 @@
+0 0 * * 0  ../Scripts/RestartServer.sh
+* * * * * ../Scripts/FreeMemoryAlert.sh

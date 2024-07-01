@@ -1,0 +1,8 @@
+[Unit]
+Description=Running docker for ClamavAPI App
+
+[Service]
+ExecStart=/bin/bash ../Scripts/ClamavAPI.sh
+
+[Install]
+WantedBy=multi-user.target
